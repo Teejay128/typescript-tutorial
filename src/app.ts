@@ -1,20 +1,4 @@
-// Classes
-class Invoice {
-    // readonly client: string // Value cannot be mutated
-    // private details: string // Value can only be mutated inside class
-    // public amount: number // Value can be mutated anywhere
-
-    constructor(
-        // Only works when you use access modifiers
-        readonly client: string,
-        private details: string,
-        public amount: number
-    ){}
-
-    format(): string {
-        return`${this.client} owes $${this.amount} for ${this.details}`
-    }
-}
+import { Invoice } from './models/invoice.js'
 
 const invOne = new Invoice('mario', 'work on the mario website', 500)
 const invTwo = new Invoice('luigi', 'work on the luigi website', 250)
