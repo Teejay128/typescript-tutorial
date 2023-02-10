@@ -1,17 +1,18 @@
 // Classes
 class Invoice {
-    client: string
-    details: string
-    amount: number
+    // readonly client: string // Value cannot be mutated
+    // private details: string // Value can only be mutated inside class
+    // public amount: number // Value can be mutated anywhere
 
-    constructor(c: string, d: string, a: number){
-        this.client = c
-        this.details = d
-        this.amount = a
-    }
+    constructor(
+        // Only works when you use access modifiers
+        readonly client: string,
+        private details: string,
+        public amount: number
+    ){}
 
     format(): string {
-        return`${this.client} owes $${amount} for ${this.details}`
+        return`${this.client} owes $${this.amount} for ${this.details}`
     }
 }
 
@@ -22,8 +23,9 @@ let invoices: Invoice[] = []
 invoices.push(invOne)
 invoices.push(invTwo)
 
-console.log(invoices)
-
+invoices.forEach(inv => {
+    console.log(inv.format())
+})
 const form = document.querySelector('.new-item-form') as HTMLFormElement
 
 // Inputs
